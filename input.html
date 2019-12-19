@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--Logo na Aba -->
+		<link rel="shortcut icon" type="text/css" href="imgs/icon.png">
+		<title>Nave.rs</title>
+		<!-- FontAwesome CSS -->
+	    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	     <!--Fonte Roboto-->
+	    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+	    <!-- Bootstrap 4 CSS -->
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	    <!-- Meu CSS -->
+	    <link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<!--navbar-->
+		<header>
+			<div class="container-fluid">
+				<div class="row">
+					<div class='col-sm-12 d-flex fundo-navbar'>
+						<!-- elementos do navbar -->
+						<img class='logo'src="imgs/VetorLogo.png" alt="nave espacial e texto 'nave.rs'">
+						<h1></h1>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--main-->
+		<main>
+			<!-- Tabela de entrada -->
+			<div class='container-fluid'>
+				<div class='row'>
+					<div class='col-sm-3'></div>
+					<div class="col-sm-6">		
+						<table class="tab meio">
+							<!--titulo-->
+							<tr>
+								<th class="lado align texto">
+									<h3>Criar Usuário</h3>
+								</th>
+							</tr>
+							<!--Nome-->		
+							<tr>
+								<th class="lado di">
+									<input id='inNome' type="text"placeholder="Nome" class='align meio'>
+								</th>
+							</tr>
+							<!--Aniversario-->
+							<tr>
+								<th class="lado di">
+									<input id='inNiver' type="text" placeholder="Data de Nascimento" class='align meio'>
+								</th>
+							</tr>
+							<!--email-->
+							<tr>
+								<th class="lado di">
+									<input id='inEmail' type="text" placeholder="E-mail" class='align meio'>
+								</th>
+							</tr>
+							<!--vaga-->
+							<tr>
+								<th class="lado di base">
+									<input id='inVaga' type="text"placeholder=" Vaga" class='align meio'>
+								</th>
+							</tr>
+						</table>
+					</div>
+					<div class='col-sm-3'></div>
+					</div>
+				</div>
+			</div>
+			<!--Botões-->
+			<div class="lado vazio content-fluid">
+				<div class='row'>
+					<div class="col-sm-3"></div>
+					<div class="col-sm-1">	
+						<button id='btAdicionar' value="Adicionar" type="button" class="btn btn-dark">Enviar</button>
+					</div>
+					<div class="col-sm-4"></div>
+					<div class="col-sm-1">
+						<button id='btAdicionar' onclick="window.location.href='index.html'" value="Adicionar" type="button" class="btn btn-dark">Voltar</button>
+					</div>
+					<div class="sm-col-3"></div>
+				</div>
+			</div>
+		</main>
+		<!--footer-->
+		<footer>
+		</footer>
+		<!-- jQuery 3.3.1 -->
+	    <script
+	    src="https://code.jquery.com/jquery-3.3.1.min.js"
+	    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	    crossorigin="anonymous"></script>
+	    <!-- Bootstrap 4 JS -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	    <!-- Meu JS -->
+	    <script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

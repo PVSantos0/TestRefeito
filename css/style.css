@@ -1,0 +1,84 @@
+body{
+	background: #F0F0F0;
+}
+
+.fundo-navbar{
+	background-color: #000000;
+	width: 1024px;
+	height: 60px;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2)
+}
+
+.logo{
+	width: 128px;
+	height: 32px;
+	position: absolute;
+	left: 32px;
+	top: 14px;
+}
+
+.vazio{
+	padding:20px;
+}
+
+.texto{
+	font-family: Roboto;
+	font-style: bold;
+	color:#7C7C7C;
+}
+
+.texto1{
+	font-family: Roboto;
+	font-style: bold;
+}
+
+.lado{
+	padding-left: 20px;
+}
+
+.align{
+	text-align: center;
+}
+
+.tab{
+	background: #FFFFFF; 
+	padding: 50px;
+	/* Shadow/Small */
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	margin: 10px;
+	width: 100%; 
+}
+
+.line{
+	width: 960px;
+	height: 0px;
+	left: 32px;
+	top: 184px;
+	border: 1px solid #7C7C7C;
+}
+
+.btn{
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+
+.di{
+	padding-right:20px;
+}
+
+.base{
+	padding-bottom: 20px;
+}
+
+.top{
+	padding-top: 20px;
+}
+
+.meio{
+	width: 100%
+}
+
+.teste{
+	margin-right: 5000px;
+}
