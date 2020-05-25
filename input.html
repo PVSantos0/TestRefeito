@@ -16,76 +16,98 @@
 	    <link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<!--navbar-->
+		<!-- Navbar -->
 		<header>
 			<div class="container-fluid">
 				<div class="row">
 					<div class='col-sm-12 d-flex fundo-navbar'>
-						<!-- elementos do navbar -->
+						<!-- Elementos do Navbar -->
 						<img class='logo'src="imgs/VetorLogo.png" alt="nave espacial e texto 'nave.rs'">
 						<h1></h1>
 					</div>
 				</div>
 			</div>
 		</header>
-		<!--main-->
+
+		<!-- Main -->
 		<main>
 			<!-- Tabela de entrada -->
-			<div class='container-fluid'>
-				<div class='row'>
-					<div class='col-sm-3'></div>
-					<div class="col-sm-6">		
-						<table class="tab meio">
-							<!--titulo-->
-							<tr>
-								<th class="lado align texto">
-									<h3>Criar Usuário</h3>
-								</th>
-							</tr>
-							<!--Nome-->		
-							<tr>
-								<th class="lado di">
-									<input id='inNome' type="text"placeholder="Nome" class='align meio'>
-								</th>
-							</tr>
-							<!--Aniversario-->
-							<tr>
-								<th class="lado di">
-									<input id='inNiver' type="text" placeholder="Data de Nascimento" class='align meio'>
-								</th>
-							</tr>
-							<!--email-->
-							<tr>
-								<th class="lado di">
-									<input id='inEmail' type="text" placeholder="E-mail" class='align meio'>
-								</th>
-							</tr>
-							<!--vaga-->
-							<tr>
-								<th class="lado di base">
-									<input id='inVaga' type="text"placeholder=" Vaga" class='align meio'>
-								</th>
-							</tr>
-						</table>
+			<div class='container-fluid'>		
+				<!-- Titulo -->
+				<div class="row mt-2">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 text-center">
+					  Novo Usuario
 					</div>
-					<div class='col-sm-3'></div>
+					<div class="col-md-2"></div>
+				</div>
+				<!-- Nome -->		
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+					  <input type="text" class="form-control text-center mt-1" placeholder="Nome" id="name">
 					</div>
+					<div class="col-md-2"></div>
+				</div>
+				<!-- Aniversario -->
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 ">
+					  <input type="text" class="form-control text-center mt-1" placeholder="Data Nascimento Ex.:DD/MM/AAAA" id="born">
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+				<!-- Email -->
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 ">
+					  <input type="text" class="form-control text-center mt-1" placeholder="E-mail" id="email">
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+				<!-- Vaga -->
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 ">
+					  <input type="text" class="form-control text-center mt-1" placeholder="Vaga" id="vg">
+					</div>
+					<div class="col-md-2"></div>
 				</div>
 			</div>
-			<!--Botões-->
+
+			<!-- Botões -->
 			<div class="lado vazio content-fluid">
 				<div class='row'>
 					<div class="col-sm-3"></div>
 					<div class="col-sm-1">	
-						<button id='btAdicionar' value="Adicionar" type="button" class="btn btn-dark">Enviar</button>
+						<button type="button" class="btn btn-dark" onclick="addUsr()">Enviar</button>
 					</div>
 					<div class="col-sm-4"></div>
 					<div class="col-sm-1">
-						<button id='btAdicionar' onclick="window.location.href='index.html'" value="Adicionar" type="button" class="btn btn-dark">Voltar</button>
+						<button onclick="window.location.href='index.html'" type="button" class="btn btn-dark">Voltar</button>
 					</div>
 					<div class="sm-col-3"></div>
 				</div>
 			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="modalBase" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				  <div class="modal-content">
+					<div id='modalColor'>
+					  <h5 class="modal-title" id="modalTitle"></h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div id='modalBody' class="modal-body"></div>
+					<div class="modal-footer">
+					  <button id='modalBtn' type="button" data-dismiss="modal"></button>
+					</div>
+				  </div>
+				</div>
+			</div>
+
 		</main>
 		<!--footer-->
 		<footer>

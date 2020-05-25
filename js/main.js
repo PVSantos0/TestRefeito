@@ -1,100 +1,184 @@
-function adicionarUsuario() {
-  // cria referência aos campos de entrada
-  var inNome = document.getElementById("inNome");
-  var inEmail = document.getElementById("inEmail");
-  var inVaga = document.getElementById("inVaga");
-  var inNiver = document.getElementById("inNiver");
-
-  var nome = inNome.value;    // obtém conteúdo dos campos
-  var email = inEmail.value;
-  var vaga = inVaga.value;
-  var niver = inNiver.value;
-
-
-  // valida preenchimento
-  if (nome == "" || email == "" || vaga == "" || niver == "") {
-    alert("Preencha os dados faltantes");
-    inNome.focus();
-    return;
+class char {
+  constructor(nameD,bornD,emailD,vgD,){
+    this.nameUsr = nameD,
+    this.bornUsr = bornD,
+    this.emailUsr = emailD,
+    this.vgUsr = vgD
   }
 
-  // cria referência ao elemento tbDados
-  var tbDados = document.getElementById("tbDados");
-
-  // chama function que irá inserir usuario na tabela
-  inserirLinha(tbDados, nome, email, vaga, niver);
-
-  // chama function que irá gravar dados em localStorage
-  gravarUsuario(nome, email, vaga, niver);
-
-  inNome.value = "";    // limpa campos de entrada
-  inEmail.value = "";
-  inVaga.value = "";  
-  inNiver.value = "";
-  inNome.focus();       // posiciona o cursor em inNome
-}
-
-var btAdicionar = document.getElementById("btAdicionar");
-btAdicionar.addEventListener("click", adicionarUsuario);
-
-function inserirLinha(tabela, nome, email, vaga, niver) {
-
-  var linha = tabela.insertRow(-1);     // adiciona uma linha na tabela
-
-  var col1 = linha.insertCell(0);       // cria colunas na linha inserida
-  var col2 = linha.insertCell(1);
-  var col3 = linha.insertCell(2);
-  var col4 = linha.insertCell(3);
-  var col5 = linha.insertCell(4);
-  
-
-  col1.textContent = nome;            // joga um conteúdo em cada célula
-  col2.textContent = email;
-  col3.textContent = vaga;           
-  col4.textContent = niver;
-}  
-
-function gravarDado(nome, email, vaga, niver) {
-
-  // se há filmes salvos em localStorare ...
-  if (localStorage.getItem("dadoNome")) {
-    // ... obtém os dados e acrescenta ";" dados
-    var dadoNome = localStorage.getItem("dadoNome") + ";" + nome;
-    var dadoEmail = localStorage.getItem("dadoEmail") + ";" + email;
-    var dadoVaga = localStorage.getItem("dadoVaga") + ";" + vaga;
-    var dadoNiver = localStorage.getItem("dadoNiver") + ";" + niver;
-
-    localStorage.setItem("dadoNome", dadoNome);   // grava dados 
-    localStorage.setItem("dadoEmail", dadoEmail);   // em localStorage 
-    localStorage.setItem("dadoVaga", dadoVaga);
-    localStorage.setItem("dadoNiver", dadoNiver); 
-
-  } else {
-    // senão, é a primeira inclusão (salva sem delimitador)
-    localStorage.setItem("dadoNome", nome);
-    localStorage.setItem("dadoEmail", email);
-    localStorage.setItem("dadoVaga", vaga);
-    localStorage.setItem("dadoNiver", niver);
-  }
-}
-
-function recuperarDado() {
-
-  // se houver dados salvos em localStorage
-  if (localStorage.getItem("dadoNome")) {
-    // obtém conteúdo e converte em elementos de vetor (na ocorrência ";")
-    var nome  = localStorage.getItem("dadoNome").split(";");
-    var email = localStorage.getItem("dadoEmail").split(";");
-    var vaga  = localStorage.getItem("dadoVaga").split(";");
-    var niver = localStorage.getItem("dadoNiver").split(";");
-
-    // cria referência ao elemento tbDados
-    var tbDados = document.getElementById("tbDados");
-
-    // percorre elementos do vetor e os insere na tabela
-    for (var i = 0; i < nome.length; i++) {
-      inserirLinha(tbDados, nome[i], email[i], vaga[i], niver[i]);
+  okDados(){
+    for(let i in this){
+      if(this[i] == undefined || this[i] == '' || this[i] == null){
+        return false
+      } 
     }
+    return true
+  }  
+}
+
+
+function addUsr(){
+  let nameD = document.getElementById('name')
+  let bornD = document.getElementById('born')
+  let emailD = document.getElementById('email')
+  let vgD = document.getElementById('vg') 
+  
+  let a = new char(
+    nameD.value,
+    bornD.value,
+    emailD.value,
+    vgD.value,
+    )
+
+  if(a.okDados()){
+    Dados.rec(a)
+
+    document.getElementById('modalTitle').innerHTML = 'Adiciondo Usuario'
+    document.getElementById('modalColor').className = 'modal-header text-success'
+    document.getElementById('modalBody').innerHTML = 'Foi cadastrado com sucesso.'
+    document.getElementById('modalBtn').innerHTML = 'Voltar'
+    document.getElementById('modalBtn').className = 'btn btn-success'
+
+    $('#modalBase').modal('show')
+  } else {
+    document.getElementById('modalTitle').innerHTML = 'Falta preenchimento de campo'
+    document.getElementById('modalColor').className = 'modal-header text-danger'
+    document.getElementById('modalBody').innerHTML = 'Existem campos obrigatorios que não foram preenchidos.'
+    document.getElementById('modalBtn').innerHTML = 'Voltar para corrigir'
+    document.getElementById('modalBtn').className = 'btn btn-danger'
+
+    $('#modalBase').modal('show')
   }
 }
-recuperarDado();
+
+class Bd {
+  constructor(){
+    let id = localStorage.getItem('id')
+      
+    if (id === null){
+        localStorage.setItem('id', 0)
+    } 
+  }
+  
+  getNextId(){
+    let nextId = localStorage.getItem('id')
+    return parseInt(nextId) + 1
+  }
+  
+  rec (localS){
+    let mais = this.getNextId()
+    localStorage.setItem(mais, JSON.stringify(localS))
+    localStorage.setItem('id', mais)
+  }
+  
+  //recuperar todos as despesas no localStorage
+  loadList() {
+    let tbItem = Array()
+       
+    let lst = localStorage.getItem('id')
+
+    for(let i = 1; i <= lst; i++){
+        let itemLs  = JSON.parse(localStorage.getItem(i))
+          
+        if(itemLs === null){
+            continue
+        }
+        itemLs.id = i //gera o id
+        tbItem.push(itemLs)
+    }  
+    return tbItem
+  }
+}
+
+let Dados = new Bd()
+
+function listExpense() {
+  let tb = []
+  tb = Dados.loadList()
+
+  //selecionado a tabela
+  //let itemTb = document.getElementById('tbHTML')
+
+  //tabela dinamica
+  tb.forEach(function(d){
+    //criar linhas
+    let row = tbHTML.insertRow()
+    //criar colunas
+    row.insertCell(0).innerHTML = d.id //se conseguisse retronar este valor 
+    row.insertCell(1).innerHTML = d.nameUsr
+    row.insertCell(2).innerHTML = d.bornUsr
+    row.insertCell(3).innerHTML = d.emailUsr
+    row.insertCell(4).innerHTML = d.vgUsr
+    
+    //botão link
+    let btn = document.createElement('button')
+    btn.className = "btn btn-success"
+    btn.innerHTML = '<a class="far fa-address-card" onclick = a1()></a>' // se puxar id para cá
+    btn.id = d.id // gera o id para botão
+    row.insertCell(5).append(btn)
+
+    //outro botão como tag a
+    /* let btn = document.createElement('a')
+    btn.className = "btn btn-success far fa-address-card"
+    btn.onclick = a1() 
+    btn.href = "id.html"
+    btn.id = d.id 
+    row.insertCell(5).append(btn) */
+  })
+}
+
+
+function a1(){
+  //mudar página -----------------
+  //window.location.href='id.html'
+
+  //pegando o Id? --------------------
+  /* tb.forEach(function(d){
+    let getId = d.id
+    console.log(getId)
+    
+  } */
+
+/*   let test = 
+  console.log(test) */
+
+  let tb = []
+  tb = Dados.loadList()
+  localStorage.setItem(JSON.stringify())
+
+  // teste ----------------------
+
+  /* let test = tb.filter(d => d.id == getId)
+  console.log(test) */
+  
+  let getId = localStorage.getItem(key)
+  console.log(getId) // retronar numeros de id
+
+  //teste do id -----------------------
+  /*let test = tb.filter(d => d.id == getId)
+  console.log(test) */
+
+  
+  //Array com id a cada objeto ---------------
+  /* let tb = []
+  tb = Dados.loadList() 
+  console.log(td) */
+  
+}
+
+
+/* //criar tabela certa ---- -----------
+
+let tb = []
+tb = Dados.loadList()
+
+tb.forEach(function(d){ 
+  //criar linhas
+  let row = tbIdHTML.insertRow()
+  //criar colunas 
+  row.insertCell(0).innerHTML = d.nameUsr
+  row.insertCell(1).innerHTML = d.bornUsr
+  row.insertCell(2).innerHTML = d.emailUsr
+  row.insertCell(3).innerHTML = d.vgUsr
+}) */
+

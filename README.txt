@@ -1,3 +1,0 @@
-Matriz de tudo é index nela consegue clicando em criar direciona para pagina input onde pode adicionar um novo usuario onde tem opção de enviar os dados ou voltar para index.
-também na index tem como entrar e ver cadastro de cada usuario clicando no Id onde redireciona para outra pagina onde pode ver informações de um usuario isolado dos outros.
-infelizmente não consegrui solucionar todos os problemas do javascript para consegrui após preenchimento dos campos de input adicionar novo usuario na lista com pagina de direcionamento isolado. 

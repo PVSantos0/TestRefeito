@@ -1,0 +1,113 @@
+class char {
+    constructor(nameD,bornD,emailD,vgD){
+      this.nameUsr = nameD,
+      this.bornUsr = bornD,
+      this.emailUsr = emailD,
+      this.vgUsr = vgD
+    }
+  
+    okDados(){
+      for(let ver in this){
+        if(this[ver] === undefined || this[ver] === '' || this[ver] === null){
+        return false
+        }
+      return true 
+      }  
+    }
+  }
+  
+  
+  function addUsr(){
+    let nameD = document.getElementById('name')
+    let bornD = document.getElementById('born')
+    let emailD = document.getElementById('email')
+    let vgD = document.getElementById('vg')
+  }
+  console.log(nameD.value, bronD.value, emailD.value, vgD.value)
+
+    let a = new char(
+      nameD.value,
+      bornD.value,
+      emailD.value,
+      vgD.value
+    )
+    if(a.okDados()){
+      //Dados.rec(a)
+  
+      document.getElementById('modalTitle').innerHTML = 'Adiciondo Usuario'
+      document.getElementById('modalColor').className = 'modal-header text-success'
+      document.getElementById('modalBody').innerHTML = 'Foi cadastrado com sucesso.'
+      document.getElementById('modalBtn').innerHTML = 'Voltar'
+      document.getElementById('modalBtn').className = 'btn btn-success'
+  
+      $('#modalBase').modal('show')
+    } else {
+      document.getElementById('modalTitle').innerHTML = 'Falta preenchimento de campo'
+      document.getElementById('modalColor').className = 'modal-header text-danger'
+      document.getElementById('modalBody').innerHTML = 'Existem campos obrigatorios que não foram preenchidos.'
+      document.getElementById('modalBtn').innerHTML = 'Voltar para corrigir'
+      document.getElementById('modalBtn').className = 'btn btn-danger'
+  
+      $('#modalBase').modal('show')
+    }
+  }
+  
+  class Bd {
+    constructor(){
+        let id = localStorage.getItem('id')
+        
+        if (id === null){
+            localStorage.setItem('id', 0)
+        } 
+    }
+    
+    getNextId(){
+        let nextId = localStorage.getItem('id')
+        return parseInt(nextId) + 1
+    }
+    
+    rec (localS){
+        let mais = this.getNextId()
+        localStorage.setItem(mais, JSON.stringify(localS))
+        localStorage.setItem('id', mais)
+    }
+    
+    loadList() {
+        let tbItem = Array()
+         
+        let lst =localStorage.getItem('id')
+        
+        //recuperar todos as despesas no localStorage
+        for(let i = 1; i <= lst; i++){
+            let itemLs  = JSON.parse(localStorage.getItem(i))
+            
+            if(itemLs === null){
+                continue
+            }
+            
+            tbItem.push(itemLs)
+        }
+        
+        return tbItem
+    }
+  }
+  
+  let Dados = new Bd()
+  
+  function listExpense() {
+    let tb = Array()
+    tb = Dados.loadList()
+    //selecionado a tabela
+    let itemTb = document.getElementById('tbHTML')
+    //lista despesas dinamica
+    tb.forEach(function(d){
+       //criar linhas
+       let row = tbHTML.insertRow()
+       //criar colunas
+       row.insertCell(0).innerHTML = itemLs
+       row.insertCell(1).innerHTML = nameUsr
+       row.insertCell(2).innerHTML = bornUsr
+       row.insertCell(3).innerHTML = emailUsr
+       row.insertCell(4).innerHTML = vgUsr
+    })
+  }

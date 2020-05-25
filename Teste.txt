@@ -1,0 +1,45 @@
+O desafio
+
+Queremos que você construa uma painel administrativo com CRUD de usuários como Single Page Application. Supondo que temos usuários que se cadastraram a uma vaga de emprego, esses usuários terão nome, email, nome da vaga a qual estão concorrendo e data de nascimento.
+
+Temos um layout base para realizar o teste. Ele é disponibilizado pelo figma. Basta criar uma conta no figma que já conseguirá visualizar as telas nesse link.
+
+As informações contidas no painel deverão ser dinâmicas, use o JSON-server (https://github.com/typicode/json-server) para consumir os dados em forma de API REST (existem exemplos na documentação). Use esse arquivo como banco de dados.
+O que esperamos?
+
+Esperamos que você implemente uma interface amigável para o usuário e que mantenha alguns padrões de código importantes que serão levados em consideração na hora de avaliarmos.
+
+A única premissa para desenvolver o painel administrativo é utilizar javascript. Você pode utilizar qualquer framework/lib js para desenvolver o teste, ou se preferir, utilizar js puro. Recomendamos o uso de React js para desenvolver o teste, pois é a tecnologia predominante na empresa.
+
+Você pode utilizar qualquer biblioteca para acelerar o desenvolvimento. Apenas cuidado para não prejudicar a performance.
+
+Algo que acreditamos ser muito importante é o feedback pro usuário a cada ação que ele executa. Feedbacks válidos que seriam bons de ser apresentados para o usuário:
+
+    Loaders
+    Alertas
+
+O que vamos avaliar?
+
+    Organização de código
+    Padronização de código
+    Feedback de ações para o usuário
+    Utilização das features mais novas do javaScript
+    Manutenibilidade
+    Performance
+    Responsividade
+
+Bônus
+
+Temos algumas tarefas que não são obrigatoriamente necessárias, mas se implementadas tem um grande peso na avaliação final do seu teste.
+
+    Utilização de redux/vuex
+    Utilizar hooks (se optar pelo uso de React)
+    Implementar testes
+
+Entrega
+
+Acreditamos não ser preciso muito tempo para realizar o teste. Por isso damos a você 7 dias para realizar o teste.
+
+Faça um arquivo README.md na raíz do projeto com instruções de como rodar o projeto localmente. Recomendamos também fazer scripts customizados no arquivo package.json para facilitar o setup do projeto.
+
+Ao terminar mande o link do repositório do projeto para felipe@nave.rs, joaopedro@nave.rs e miguel.scherdien@nave.rs.
